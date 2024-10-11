@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}View Uploaded Image{% endblock %}
+
+{% block content %}
+    <h2>Uploaded and Processed Images:</h2>
+    <div class="image-container">
+        <!-- Ảnh gốc -->
+        <div class="image-item">
+            <h3>Uploaded Image</h3>
+            <img src="/static/uploads/{{ filename }}" alt="Uploaded Image">
+        </div>
+        
+        <!-- Ảnh Denoising -->
+        <div class="image-item">
+            <h3>Denoised Image</h3>
+            <img src="{{ url_for('static', filename=denoised_path) }}" alt="Denoised Image">
+        </div>
+
+        <!-- Ảnh Sharpening -->
+        <div class="image-item">
+            <h3>Sharpened Image</h3>
+            <img src="{{ url_for('static', filename=sharpened_path) }}" alt="Sharpened Image">
+        </div>
+
+        <!-- Ảnh Edge Detection (Sobel, Prewitt, Canny) -->
+        <div class="image-item">
+            <h3>Sobel Edge Detection</h3>
+            <img src="{{ url_for('static', filename=sobel_path) }}" alt="Sobel Edge Detection">
+        </div>
+
+        <div class="image-item">
+            <h3>Prewitt Edge Detection</h3>
+            <img src="{{ url_for('static', filename=prewitt_path) }}" alt="Prewitt Edge Detection">
+        </div>
+
+        <div class="image-item">
+            <h3>Canny Edge Detection</h3>
+            <img src="{{ url_for('static', filename=canny_path) }}" alt="Canny Edge Detection">
+        </div>
+    </div>
+
+    <div class="back-button">
+        <a href="/">Upload Another Image</a>
+    </div>
+{% endblock %}
